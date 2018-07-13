@@ -17,12 +17,12 @@ import { ImcService } from '../services/imc';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 const config = {
-  apiKey: "AIzaSyDltzEkbhWf63Avgjnehrh4k6Eb2pLEOqY",
-  authDomain: "hellofirebase-45140.firebaseapp.com",
-  databaseURL: "https://hellofirebase-45140.firebaseio.com",
-  projectId: "hellofirebase-45140",
-  storageBucket: "hellofirebase-45140.appspot.com",
-  messagingSenderId: "479367654861"
+  apiKey: "AIzaSyAGoa378DyTpCLgWpLZjZ7F6i_3ZolL3Sc",
+  authDomain: "hellofirebase-4d514.firebaseapp.com",
+  databaseURL: "https://hellofirebase-4d514.firebaseio.com",
+  projectId: "hellofirebase-4d514",
+  storageBucket: "hellofirebase-4d514.appspot.com",
+  messagingSenderId: "707902383156"
 };
 
 @NgModule({

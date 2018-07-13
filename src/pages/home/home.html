@@ -26,10 +26,10 @@
      Cadastrar Imc</button>
 
   <ion-list>
-    <ion-item *ngFor="let imc of items | async">
-      <!-- <h3>{{imc.nome}}</h3> -->
-      <!-- <h2>{{imc.key}}</h2> -->
-      {{imc | json}}
+    <ion-item *ngFor="let im of items | async" (click)="editarRemover(im)">
+      <h3>{{im.nome}}</h3>
+      <h2>{{im.key}}</h2>
+      <!-- {{im | json}} -->
     </ion-item>
   </ion-list>
 

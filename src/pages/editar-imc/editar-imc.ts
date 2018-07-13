@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the EditarImcPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Imc } from '../../model/imc';
+import { ImcService } from '../../services/imc';
 
 @IonicPage()
 @Component({
@@ -14,12 +10,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'editar-imc.html',
 })
 export class EditarImcPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+private imc: Imc = new Imc();
+  constructor(public navCtrl: NavController, public navParams: NavParams, public imcService:ImcService) {
+    this.imc = this.navParams.get("imc");
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditarImcPage');
+  }
+
+  alterarImc(){
+    this.imcService.updateImc(this.imc);
+    this.navCtrl.pop();
+  }
+
+  removerImc(){
+    this.imcService.removeImc(this.imc);
+    this.navCtrl.pop();
   }
 
 }

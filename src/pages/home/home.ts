@@ -3,6 +3,8 @@ import { NavController } from 'ionic-angular';
 
 import { Imc } from '../../model/imc';
 
+import { EditarImcPage } from '../editar-imc/editar-imc';
+
 import * as firebase from 'firebase';
 
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
@@ -32,20 +34,12 @@ export class HomePage {
   private itemCollection: AngularFirestoreCollection<Imc>;
   items: Observable<Imc[]>
 
-
-
-
   constructor(public navCtrl: NavController, private imcService: ImcService, private afs: AngularFirestore) {
 
 
     this.itemCollection = afs.collection<Imc>('imc');
-    this.items = this.itemCollection.valueChanges();
-
-
-    console.log("teste?: ");
-
-
-
+    //this.items = this.itemCollection.valueChanges();
+    this.items = this.imcService.getImcs().valueChanges();
   }
 
   converterNumber(numero): number {
@@ -53,22 +47,19 @@ export class HomePage {
   }
 
   cadastrarImc() {
-    //    let novoImc = this.ref.push();
-    //    novoImc.set(this.imc);
-    //this.imcService.addImc(this.imc);
-    const id = this.afs.createId();
-    //const item: Item = { id, name };
-    this.imc.key = id;
+  //  const id = this.afs.createId();
+  //  this.imc.key = id;
+  //  this.itemCollection.doc(id).set(JSON.parse(JSON.stringify(this.imc)));
+    this.imcService.addImc(this.imc);
+  }
 
-    this.itemCollection.doc(id).set(JSON.parse(JSON.stringify(this.imc)));
-
-    //this.itemCollection.add(JSON.parse(JSON.stringify(this.imc)));
-    //  this.imc = new Imc();
-
-    //console.log("IMC :: " + this.imc.nome);
+  editarRemover(imcEditarRemover:Imc){
+    this.navCtrl.push(EditarImcPage,{imc:imcEditarRemover});    
   }
 
 }
+
+//Não será mais utilizado!!
 export const snapshotToArray = snapshot => {
   var returnArr = [];
   snapshot.forEach(childSnapshot => {
